@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!--
+@author: Amir Sanni <amirsanni@gmail.com>
+@date: 29th-Dec-2016
+-->
+<html>
+    <head>
+        <title>Calendar</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.css">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.print.css" media='print'>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.min.js"></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/datepair.js/0.4.14/jquery.datepair.min.js'></script>
+        
+        
+        <script src="js/cal.js"></script>
+    </head>
+    
+    <body>
+        <div class='container'>
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <small>
+                        <b>Click on a date to add an event</b>
+                    </small>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-sm-12" id="userCal" style='margin-bottom: 20px'></div>
+            </div>
+        </div>
+        
+        <div class="modal fade" id='setAppModal' data-backdrop='static' role='dialog'>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4>Create Event</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <form id='personalForm' name='personalForm' class="form-horizontal">      
+                            <div class="row text-center">
+                                <span id='pFormErr' class="errMsg"></span>
+                            </div>
+
+                            <div class="row form-group-sm">
+                                <div class="col-sm-12">
+                                    <label class="control-label">Title</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <span><i class="fa fa-briefcase"></i></span>
+                                        </div>
+                                        <input type="text" id='appPersonalTitle' class="form-control" placeholder="Title">
+                                    </div>
+                                    <span class="help-block errMsg" id='appPersonalTitleErr'></span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-8 form-group-sm">
+                                    <label class="control-label">From Date</label>                                    
+                                    <div class="input-group">
+                                        <input type="text" id='appPersonalFromDate' class="form-control date start">
+                                        <div class="input-group-addon">
+                                            <span><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                    <span class="help-block errMsg" id='appPersonalFromDateErr'></span>
+                                </div>
+
+                                <div class="col-sm-4 form-group-sm">
+                                    <label class="control-label">From Time</label>
+                                    <div class="input-group">
+                                        <input type="text" id='appPersonalFromTime' class="form-control time start">
+                                        <div class="input-group-addon">
+                                            <span><i class="fa fa-clock-o"></i></span>
+                                        </div>
+                                    </div>
+                                    <span class="help-block errMsg" id='appPersonalFromTimeErr'></span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-8 form-group-sm">
+                                    <label class="control-label">To Date</label>
+                                    <div class="input-group">
+                                        <input type="text" id='appPersonalToDate' class="form-control date end">
+                                        <div class="input-group-addon">
+                                            <span><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                    <span class="help-block errMsg" id='appPersonalToDateErr'></span>
+                                </div>
+
+                                <div class="col-sm-4 form-group-sm">
+                                    <label class="control-label">To Time</label>
+                                    <div class="input-group">
+                                        <input type="text" id='appPersonalToTime' class="form-control time end">
+                                        <div class="input-group-addon">
+                                            <span><i class="fa fa-clock-o"></i></span>
+                                        </div>
+                                    </div>
+                                    <span class="help-block errMsg" id='appPersonalToTimeErr'></span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="btn btn-primary btn-sm" id='appPersonalCreate'>Create</button>
+                        <button class="btn btn-danger btn-sm" data-dismiss='modal'>Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
