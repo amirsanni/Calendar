@@ -8,7 +8,7 @@ const spinnerClass = 'fa fa-spinner faa-spin animated';
 
 $(document).ready(function(){
     //initialize time input widgets for setting appointment
-    $('#setAppModal .time').timepicker({
+    $('#setEventModal .time').timepicker({
         timeFormat: 'H:i',
         disableTextInput: true,
         step: 30,
@@ -18,7 +18,7 @@ $(document).ready(function(){
     });
     
     //initialise date input widgets for setting appointment
-    $("#setAppModal .date").datepicker({
+    $("#setEventModal .date").datepicker({
         format: 'yyyy-mm-dd',
         autoclose: true,
         assumeNearbyYear: true,
@@ -29,7 +29,7 @@ $(document).ready(function(){
     
     
     //now initialise datepair for setting appointment
-    $("#setAppModal").datepair();
+    $("#setEventModal").datepair();
     
     
     /*
@@ -75,8 +75,8 @@ $(document).ready(function(){
         nextDayThreshold: "00:00:00",// (12am)time to regard as the next day
         
         events: {
-            url: 'http://localhost/bcross/appointments/lapp',
-            data: {},
+            url: 'php/events.php',
+            data: {action:'get'},
             method: 'POST',
             
             fail: function(){
@@ -117,9 +117,9 @@ $(document).ready(function(){
         
         if(today.stripTime().format() <= clickedDate.format()){
             //set the date field in the date on the modal to the selected date
-            $("#setAppModal .date").datepicker('update', clickedDate.stripTime().format());
+            $("#setEventModal .date").datepicker('update', clickedDate.stripTime().format());
             
-            $("#setAppModal").modal('show');
+            $("#setEventModal").modal('show');
         }
     });
     
@@ -161,7 +161,7 @@ $(document).ready(function(){
     usercal.on('eventMouseover', function(e, jsEvent, view){
         $(this).attr('data-toggle', 'tooltip');
         $(this).attr('data-placement', 'bottom');
-        $(this).attr('data-title', e.title+". Status: "+e.status);
+        $(this).attr('data-title', e.description);
         
         $(this).tooltip('show');
     });
@@ -204,6 +204,7 @@ $(document).ready(function(){
         var fromTime = $("#appPersonalFromTime").val();
         var toDate = $("#appPersonalToDate").val();
         var toTime = $("#appPersonalToTime").val();
+        var description = $("#appPersonalDescription").val();
         
         if(!title || !fromDate || !fromTime || !toDate || !toTime){
             !title ? $("#appPersonalTitleErr").html("Set event title") : $("#appPersonalTitleErr").html("");
@@ -234,8 +235,8 @@ $(document).ready(function(){
         $("#pFormErr").css({color:'black'}).html("<i class='"+spinnerClass+"'></i> Creating event...");
         
         $.ajax({
-            url: "http://localhost/bcross/appointments/cpe",
-            data: {s:startDate, e:endDate, t:title},
+            url: "php/events.php",
+            data: {s:startDate, e:endDate, t:title, description:description, action:'post'},
             method: 'POST'
         }).done(function(rd){
             if(rd.status === 1){
@@ -245,21 +246,22 @@ $(document).ready(function(){
                 //remove msg after 5secs
                 setTimeout(function(){
                     $("#pFormErr").html("");
-                }, 5000);
+                    
+                    $("#setEventModal").modal('hide');
+                }, 2000);
 
                 //render event on calendar
                 $("#userCal").fullCalendar('renderEvent', {
-                        id: rd.id,
-                        title: title,
-                        start: startDate,
-                        end: endDate,
-                        allday: false,
-                        status: "OK",
-                        type: "personal"
+                    id: rd.id,
+                    title: title,
+                    start: startDate,
+                    end: endDate,
+                    allday: false,
+                    description: description
                 }, false);
                 
-                //unset title from field
-                $("#appPersonalTitle").val("");
+                //reset form
+                document.getElementById('personalForm').reset();
             }
 
             else if(rd.status === -1){
