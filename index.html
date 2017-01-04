@@ -10,8 +10,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.8/font-awesome-animation.min.css">
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.css">
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.print.css" media='print'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -40,7 +44,7 @@
             </div>
         </div>
         
-        <div class="modal fade" id='setAppModal' data-backdrop='static' role='dialog'>
+        <div class="modal fade" id='setEventModal' data-backdrop='static' role='dialog'>
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header text-center">
@@ -66,12 +70,24 @@
                                     <span class="help-block errMsg" id='appPersonalTitleErr'></span>
                                 </div>
                             </div>
+                            
+                            <div class="row form-group-sm">
+                                <div class="col-sm-12">
+                                    <label class="control-label">Description <small><i>(optional)</i></small></label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <span><i class="fa fa-book"></i></span>
+                                        </div>
+                                        <textarea id='appPersonalDescription' class="form-control" placeholder="Optional description"></textarea>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="row">
                                 <div class="col-sm-8 form-group-sm">
                                     <label class="control-label">From Date</label>                                    
                                     <div class="input-group">
-                                        <input type="text" id='appPersonalFromDate' class="form-control date start">
+                                        <input type="text" id='appPersonalFromDate' class="form-control date start" placeholder="Start Date">
                                         <div class="input-group-addon">
                                             <span><i class="fa fa-calendar"></i></span>
                                         </div>
@@ -95,7 +111,7 @@
                                 <div class="col-sm-8 form-group-sm">
                                     <label class="control-label">To Date</label>
                                     <div class="input-group">
-                                        <input type="text" id='appPersonalToDate' class="form-control date end">
+                                        <input type="text" id='appPersonalToDate' class="form-control date end" placeholder="End Date">
                                         <div class="input-group-addon">
                                             <span><i class="fa fa-calendar"></i></span>
                                         </div>
