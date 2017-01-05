@@ -10,6 +10,7 @@ A simple implementation of fullCalendar https://github.com/fullcalendar/fullcale
 - Updating of events
 - Deleting events
 - Day selection
+- Drag and drop
 
 # Demo
 View demo at http://1410inc.xyz/calendar/
