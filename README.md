@@ -1,4 +1,4 @@
-# calendar
+# Calendar
 A simple implementation of fullCalendar https://github.com/fullcalendar/fullcalendar
 
 # Features
