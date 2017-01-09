@@ -1,5 +1,5 @@
 # Calendar
-A simple implementation of fullCalendar https://github.com/fullcalendar/fullcalendar
+A simple implementation of [fullCalendar] (https://github.com/fullcalendar/fullcalendar)
 
 # Features
 - Adding events to the calendar
@@ -13,4 +13,4 @@ A simple implementation of fullCalendar https://github.com/fullcalendar/fullcale
 - Drag and drop
 
 # Demo
-View demo at http://1410inc.xyz/calendar/
+View demo [here] (http://1410inc.xyz/calendar/)
