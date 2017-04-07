@@ -13,4 +13,4 @@ A simple implementation of [fullCalendar] (https://github.com/fullcalendar/fullc
 - Drag and drop
 
 # Demo
-View demo [here] (https://1410inc.xyz/calendar/)
+View demo here (https://1410inc.xyz/calendar/)
