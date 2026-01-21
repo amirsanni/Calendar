@@ -2,7 +2,7 @@
 
 /**
  * @fileName dbconn
- * @author Ameer <amirsanni@gmail.com>
+ * @author Amir Sanni <amirsanni@gmail.com>
  * @date 05-Jan-2017
  */
 

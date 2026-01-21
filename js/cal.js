@@ -108,9 +108,6 @@ $(document).ready(function(){
     
     //when a day is clicked
     usercal.on('dayClick', function(clickedDate, jsEvent, view){
-        //different modal for different user role. 
-        //Doctors can set personal event and also time they'll be available for booking
-        //other users can only set personal event
         var userCal = $('#userCal').fullCalendar('getCalendar');//get calendar object
         
         var today = userCal.moment();//create a moment object from the calendar's object
@@ -177,7 +174,6 @@ $(document).ready(function(){
     //TO show loading icon when an event is being loaded
     usercal.on('loading', function(isLoading, view){
         if(isLoading){
-            //displayFlashMsg("Fetching events", spinnerClass, 'black', '', true);
             $("#calMsg").html("<i class='"+spinnerClass+"'></i> Fetching events...");
         }
         

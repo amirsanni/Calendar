@@ -9,7 +9,7 @@ $obj->index();
 /**
  * Description of events
  *
- * @author Ameer <amirsanni@gmail.com>
+ * @author Amir Sanni <amirsanni@gmail.com>
  * @date 04-Jan-2017
  */
 class events {
