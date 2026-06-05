@@ -11,6 +11,3 @@ A simple implementation of [fullCalendar] (https://github.com/fullcalendar/fullc
 - Deleting events
 - Day selection
 - Drag and drop
-
-# Demo
-View demo here (https://1410inc.xyz/calendar/)
